@@ -140,10 +140,11 @@ const Home = () => {
     let ctx = gsap.context(() => {
       gsap.registerPlugin(ScrollTrigger);
       const tl = gsap.timeline();
+      const sections = gsap.utils.toArray(".explore");
 
       tl.to(".wrapper", {
         duration: 5,
-        x: -window.innerWidth,
+        xPercent: -100 * (sections.length - 1),
       });
 
       ScrollTrigger.create({
@@ -232,8 +233,8 @@ const Home = () => {
       <section className="bg-bluePrimary pt-14 pb-16 mb-40">
         <div className="wrapper flex items-center">
           {coursesData.map((item, i) => (
-            <div id={`item${i + 1}`} key={i} className="min-w-full text-white ">
-              <div id={`explore`} className="max-w-5xl m-auto w-full explore">
+            <div key={i} className="min-w-full text-white explore">
+              <div className="max-w-5xl m-auto w-full ">
                 <h2 className="mb-5">{item.title}</h2>
                 <p className="text-xl">{item.text}</p>
 
