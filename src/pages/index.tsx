@@ -6,6 +6,10 @@ import ButtonPrimary from "@/components/partials/ButtonPrimary";
 import TickIcon from "@/components/icons/TickIcon";
 import Star from "@/components/icons/Star";
 
+import { gsap } from "gsap";
+
+import { ScrollTrigger } from "@/assets/gsap/src/ScrollTrigger";
+
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from "react-responsive-carousel";
 
@@ -110,10 +114,50 @@ const blogData = [
     text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,",
   },
 ];
+const coursesData = [
+  {
+    img: exploreCourses,
+    title: "Explore Short Courses",
+    text: "Learn about the Blockchain Technology. Join us and explore the possibilities!",
+  },
+  {
+    img: exploreCourses,
+    title: "Access Resources",
+    text: "Gain access to a wide range of resources curated by professionals, including market reports, books, short courses, and more!",
+  },
+  {
+    img: exploreCourses,
+    title: "Read Blogs",
+    text: "Read blogs that provide you with market insights, the latest news, and the best crypto content!",
+  },
+];
 
 const Home = () => {
   const [frequentQuestions, setFrequentQuestions] = useState<number[]>([]);
   const [customerReviewPage, setCustomerReviewPage] = useState(0);
+
+  useEffect(() => {
+    let ctx = gsap.context(() => {
+      gsap.registerPlugin(ScrollTrigger);
+      const tl = gsap.timeline();
+
+      tl.to(".wrapper", {
+        duration: 5,
+        x: -window.innerWidth,
+      });
+
+      ScrollTrigger.create({
+        animation: tl,
+        trigger: ".wrapper",
+        start: "center center",
+        mark: true,
+        scrub: true,
+        pin: true,
+        end: "+=3000",
+      });
+    });
+    return () => ctx.revert();
+  }, []);
 
   const toggleFrequentQuestionsHandler = (i: number) => {
     if (frequentQuestions.includes(i)) {
@@ -158,6 +202,7 @@ const Home = () => {
         </div>
       </header>
 
+      {/* about */}
       <section className="py-8 bg-lightBlue mb-40">
         <div className="max-w-7xl m-auto flex items-center justify-between gap-x-20">
           <div className="max-w-2xl">
@@ -182,21 +227,26 @@ const Home = () => {
         </div>
       </section>
 
-      <section className="pt-14 pb-16 bg-bluePrimary mb-40">
-        <div className="max-w-5xl m-auto text-white">
-          <h2 className="mb-5">Explore Short Courses</h2>
-          <p className="text-xl">
-            Learn about the{" "}
-            <span className="text-colorYellow">Blockchain Technology</span>.
-            Join us and explore the possibilities!
-          </p>
+      {/* explore short courses */}
 
-          <div className="w-full">
-            <Image src={exploreCourses} alt="exploreCourses" />
-          </div>
+      <section className="bg-bluePrimary pt-14 pb-16 mb-40">
+        <div className="wrapper flex items-center">
+          {coursesData.map((item, i) => (
+            <div id={`item${i + 1}`} key={i} className="min-w-full text-white ">
+              <div id={`explore`} className="max-w-5xl m-auto w-full explore">
+                <h2 className="mb-5">{item.title}</h2>
+                <p className="text-xl">{item.text}</p>
+
+                <div className="max-w-4xl">
+                  <Image src={item.img} alt="exploreCourses" />
+                </div>
+              </div>
+            </div>
+          ))}
         </div>
       </section>
 
+      {/* benefits of courses */}
       <section className="pt-12 bg-lightBlue mb-40">
         <div className="max-w-7xl m-auto">
           <h2 className="mb-9 text-bluePrimary">Benefits of Courses</h2>
@@ -227,6 +277,7 @@ const Home = () => {
         </div>
       </section>
 
+      {/* global alumni */}
       <section className="bg-lightBlue mb-40 py-24">
         <div className="max-w-6xl m-auto">
           <p className="text-xl mb-4">HEAR IT FROM</p>
@@ -238,6 +289,7 @@ const Home = () => {
         </div>
       </section>
 
+      {/* frequently asked questions */}
       <section className="mb-40">
         <div className="max-w-7xl m-auto">
           <h3 className="text-center mb-12">Frequently Asked Questions</h3>
@@ -278,6 +330,7 @@ const Home = () => {
         </div>
       </section>
 
+      {/* courses, students, and branches */}
       <section className="bg-bluePrimary py-20 mb-28">
         <div className="max-w-6xl m-auto grid grid-cols-3 text-white justify-items-center">
           {websiteData.map((item) => (
@@ -289,6 +342,7 @@ const Home = () => {
         </div>
       </section>
 
+      {/* customer review */}
       <section className="bg-lightBlue pt-20 pb-5 mb-40">
         <div className="max-w-7xl m-auto text-center relative">
           <h4 className="font-serif inter font-bold mb-12">
@@ -327,6 +381,7 @@ const Home = () => {
         </div>
       </section>
 
+      {/* blogs */}
       <section className="bg-lightBlue pt-8 pb-11 mb-16">
         <div className="max-w-7xl m-auto">
           <p className="text-2xl mb-12">From our Blog.....</p>

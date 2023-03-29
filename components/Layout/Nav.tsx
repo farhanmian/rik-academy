@@ -6,7 +6,7 @@ import Link from "next/link";
 const navLinks = ["Home", "About", "Courses", "Blogs", "Contact"];
 
 const Nav = () => {
-  const [navColor, setNavColor] = useState("");
+  const [navColor, setNavColor] = useState("text-white");
 
   useEffect(() => {
     window.addEventListener("scroll", changeColor);
