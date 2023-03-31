@@ -11,6 +11,9 @@ module.exports = {
         lightBlue: "#C1C9FF",
         colorYellow: "#E7C62F",
       },
+      screens: {
+        xs: "480px",
+      },
     },
   },
   plugins: [],

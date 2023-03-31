@@ -171,7 +171,7 @@ const Home = () => {
     }
   };
 
-  console.log("customerReviewPage", customerReviewPage);
+  const innerContainerStyling = "max-2xl:px-1 max-xl:px-4 max-xs:px-2";
 
   return (
     <>
@@ -183,7 +183,9 @@ const Home = () => {
       </Head>
 
       <header className={styles.header}>
-        <div className="m-auto max-w-7xl h-full flex items-end ">
+        <div
+          className={`m-auto max-w-7xl h-full flex items-end ${innerContainerStyling}`}
+        >
           <div className="max-w-xl mb-10">
             <h1 className="mb-8">Empowering the future of decentralization</h1>
             <div className="max-w-md mb-10 font-medium">
@@ -205,8 +207,10 @@ const Home = () => {
 
       {/* about */}
       <section className="py-8 bg-lightBlue mb-40">
-        <div className="max-w-7xl m-auto flex items-center justify-between gap-x-20">
-          <div className="max-w-2xl">
+        <div
+          className={`max-w-7xl m-auto flex max-md:flex-col-reverse items-center justify-between xl:gap-x-20 ${innerContainerStyling}`}
+        >
+          <div className="max-w-2xl max-xl:max-w-xl max-lg:max-w-sm max-md:max-w-lg text-center md:text-left">
             <h2 className="mb-8 text-bluePrimary">About RIK Academy</h2>
             <p>
               Our academy is dedicated to providing top-notch education in
@@ -218,7 +222,7 @@ const Home = () => {
               practical skills and knowledge in these rapidly evolving fields.
             </p>
           </div>
-          <div className="max-w-lg w-full">
+          <div className="max-w-lg max-xl:max-w-sm w-full">
             <Image
               src={aboutImg}
               alt="about-rik-academy"
@@ -229,39 +233,38 @@ const Home = () => {
       </section>
 
       {/* explore short courses */}
-
-      <section className="bg-bluePrimary pt-14 pb-16 mb-40">
+      {/* <section className="bg-bluePrimary pt-14 pb-16 mb-40">
         <div className="wrapper flex items-center">
           {coursesData.map((item, i) => (
             <div key={i} className="min-w-full text-white explore">
               <div className="max-w-5xl m-auto w-full ">
                 <h2 className="mb-5">{item.title}</h2>
-                <p className="text-xl">{item.text}</p>
+                <p className="text-xl mb-7">{item.text}</p>
 
-                <div className="max-w-4xl">
+                <div className="max-w-3xl">
                   <Image src={item.img} alt="exploreCourses" />
                 </div>
               </div>
             </div>
           ))}
         </div>
-      </section>
+      </section> */}
 
       {/* benefits of courses */}
       <section className="pt-12 bg-lightBlue mb-40">
-        <div className="max-w-7xl m-auto">
+        <div className={`max-w-7xl m-auto ${innerContainerStyling}`}>
           <h2 className="mb-9 text-bluePrimary">Benefits of Courses</h2>
 
-          <div className="flex items-center gap-x-28">
-            <div>
+          <div className="flex items-center max-xl:items-end xl:gap-x-28 justify-between lg:justify-around">
+            <div className="max-xl:max-w-md max-lg:hidden">
               <Image src={benefitsOfCourses} alt="img" />
             </div>
 
-            <div>
+            <div className="max-xl:pb-10">
               {coursesBenefits.map((item, i) => (
                 <li
                   key={item}
-                  className={`list-none w-max flex items-center gap-x-5 ${
+                  className={`list-none xs:w-max flex items-center gap-x-5 lg:text-sm ${
                     coursesBenefits.length === i + 1 ? "" : "mb-5"
                   }`}
                 >
@@ -279,7 +282,7 @@ const Home = () => {
       </section>
 
       {/* global alumni */}
-      <section className="bg-lightBlue mb-40 py-24">
+      {/* <section className="bg-lightBlue mb-40 py-24">
         <div className="max-w-6xl m-auto">
           <p className="text-xl mb-4">HEAR IT FROM</p>
           <h2 className="text-white mb-12">Our Global Alumni</h2>
@@ -288,10 +291,10 @@ const Home = () => {
             <Image src={globalAlumniImg} alt="globalAlumniImg" />
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* frequently asked questions */}
-      <section className="mb-40">
+      {/* <section className="mb-40">
         <div className="max-w-7xl m-auto">
           <h3 className="text-center mb-12">Frequently Asked Questions</h3>
 
@@ -329,10 +332,10 @@ const Home = () => {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* courses, students, and branches */}
-      <section className="bg-bluePrimary py-20 mb-28">
+      {/* <section className="bg-bluePrimary py-20 mb-28">
         <div className="max-w-6xl m-auto grid grid-cols-3 text-white justify-items-center">
           {websiteData.map((item) => (
             <div key={item.title}>
@@ -341,10 +344,10 @@ const Home = () => {
             </div>
           ))}
         </div>
-      </section>
+      </section> */}
 
       {/* customer review */}
-      <section className="bg-lightBlue pt-20 pb-5 mb-40">
+      {/* <section className="bg-lightBlue pt-20 pb-5 mb-40">
         <div className="max-w-7xl m-auto text-center relative">
           <h4 className="font-serif inter font-bold mb-12">
             People Love Our Crypto Courses
@@ -353,6 +356,12 @@ const Home = () => {
           <Carousel
             showArrows={false}
             showStatus={false}
+            autoPlay
+            infiniteLoop
+            showThumbs={false}
+            onChange={(index) => {
+              setCustomerReviewPage(index);
+            }}
             renderIndicator={(clickHandler, isSelected, index) => {
               return (
                 <button
@@ -380,10 +389,10 @@ const Home = () => {
             ))}
           </Carousel>
         </div>
-      </section>
+      </section> */}
 
       {/* blogs */}
-      <section className="bg-lightBlue pt-8 pb-11 mb-16">
+      {/* <section className="bg-lightBlue pt-8 pb-11 mb-16">
         <div className="max-w-7xl m-auto">
           <p className="text-2xl mb-12">From our Blog.....</p>
           <div className="grid grid-cols-3 justify-items-center gap-x-6">
@@ -395,7 +404,7 @@ const Home = () => {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
     </>
   );
 };
