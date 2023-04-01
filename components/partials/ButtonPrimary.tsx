@@ -7,7 +7,7 @@ const ButtonPrimary: React.FC<{
 }> = ({ children, className: classes, onClick }) => {
   return (
     <button
-      className={`w-max py-2.5 px-8 rounded bg-bluePrimary text-white hover:drop-shadow-lg active:drop-shadow-sm transition-all ${classes}`}
+      className={`py-2.5 px-8 rounded bg-bluePrimary text-white hover:drop-shadow-lg active:drop-shadow-sm transition-all ${classes}`}
       onClick={onClick}
     >
       {children}

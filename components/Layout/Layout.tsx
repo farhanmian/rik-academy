@@ -12,7 +12,7 @@ const Layout: React.FC<{ children: JSX.Element | React.ReactNode }> = ({
     <>
       <Nav />
       <main className={`${pathname !== "/" ? "mt-28" : ""}`}>{children}</main>
-      {/* <Footer /> */}
+      <Footer />
     </>
   );
 };

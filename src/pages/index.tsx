@@ -16,12 +16,17 @@ import { Carousel } from "react-responsive-carousel";
 import aboutImg from "@/assets/img/about-academy.png";
 import exploreCourses from "@/assets/img/explore-courses.png";
 import benefitsOfCourses from "@/assets/img/benefits-of-courses.png";
-import globalAlumniImg from "@/assets/img/global-alumni.png";
+
 import AddIcon from "@/components/icons/AddIcon";
 import userImg from "@/assets/img/user-1.png";
 import bolgImg1 from "@/assets/img/blog-1.png";
 import bolgImg2 from "@/assets/img/blog-2.png";
 import bolgImg3 from "@/assets/img/blog-3.png";
+
+import globalAlumniImg1 from "@/assets/img/global-alumni-1.png";
+import globalAlumniImg2 from "@/assets/img/global-alumni-2.png";
+import globalAlumniImg3 from "@/assets/img/global-alumni-3.png";
+import globalAlumniImg4 from "@/assets/img/global-alumni-4.png";
 
 const coursesBenefits = [
   "Get hired easily",
@@ -130,6 +135,12 @@ const coursesData = [
     title: "Read Blogs",
     text: "Read blogs that provide you with market insights, the latest news, and the best crypto content!",
   },
+];
+const globalAlumniImgData = [
+  globalAlumniImg1,
+  globalAlumniImg2,
+  globalAlumniImg3,
+  globalAlumniImg4,
 ];
 
 const Home = () => {
@@ -282,20 +293,27 @@ const Home = () => {
       </section>
 
       {/* global alumni */}
-      {/* <section className="bg-lightBlue mb-40 py-24">
-        <div className="max-w-6xl m-auto">
+      <section className="bg-lightBlue mb-40 py-24">
+        <div className={`max-w-6xl m-auto ${innerContainerStyling}`}>
           <p className="text-xl mb-4">HEAR IT FROM</p>
           <h2 className="text-white mb-12">Our Global Alumni</h2>
 
-          <div>
-            <Image src={globalAlumniImg} alt="globalAlumniImg" />
+          <div className="grid sm:grid-cols-2 md:grid-cols-4 justify-items-center gap-x-10 gap-y-10">
+            {globalAlumniImgData.map((item, i) => (
+              <Image
+                key={i}
+                src={item}
+                alt="globalAlumniImg"
+                className="max-md:w-52"
+              />
+            ))}
           </div>
         </div>
-      </section> */}
+      </section>
 
       {/* frequently asked questions */}
-      {/* <section className="mb-40">
-        <div className="max-w-7xl m-auto">
+      <section className="mb-40">
+        <div className={`max-w-7xl m-auto ${innerContainerStyling}`}>
           <h3 className="text-center mb-12">Frequently Asked Questions</h3>
 
           <div className="flex flex-col gap-y-8">
@@ -307,13 +325,13 @@ const Home = () => {
                 }`}
               >
                 <ButtonPrimary
-                  className="rounded-none min-w-full text-start py-5 hover:drop-shadow-sm flex items-center gap-x-9"
+                  className="rounded-none min-w-full text-start py-5 max-sm:px-3 hover:drop-shadow-sm flex items-center gap-x-4 sm:gap-x-9"
                   onClick={() => {
                     toggleFrequentQuestionsHandler(i);
                   }}
                 >
                   <AddIcon
-                    className={`transition-all ${
+                    className={`transition-all min-w-max ${
                       frequentQuestions.includes(i) ? "-rotate-45" : ""
                     }`}
                   />
@@ -332,11 +350,11 @@ const Home = () => {
             ))}
           </div>
         </div>
-      </section> */}
+      </section>
 
       {/* courses, students, and branches */}
-      {/* <section className="bg-bluePrimary py-20 mb-28">
-        <div className="max-w-6xl m-auto grid grid-cols-3 text-white justify-items-center">
+      <section className="bg-bluePrimary py-20 mb-28">
+        <div className="max-w-6xl m-auto grid xs:grid-cols-3 gap-y-10 max-xs:text-center text-white justify-items-center">
           {websiteData.map((item) => (
             <div key={item.title}>
               <h2>{item.numbers}</h2>
@@ -344,11 +362,13 @@ const Home = () => {
             </div>
           ))}
         </div>
-      </section> */}
+      </section>
 
       {/* customer review */}
-      {/* <section className="bg-lightBlue pt-20 pb-5 mb-40">
-        <div className="max-w-7xl m-auto text-center relative">
+      <section className="bg-lightBlue pt-20 pb-5 mb-40">
+        <div
+          className={`max-w-7xl m-auto text-center relative ${innerContainerStyling}`}
+        >
           <h4 className="font-serif inter font-bold mb-12">
             People Love Our Crypto Courses
           </h4>
@@ -379,7 +399,7 @@ const Home = () => {
           >
             {customerReview.map((item, i) => (
               <div key={i} className="flex flex-col items-center">
-                <div className="w-40 h-40 mb-5">
+                <div className="xs:w-40 w-32 xs:h-40 h-32 mb-5">
                   <Image src={item.img} alt="user" className="rounded-full" />
                 </div>
                 <RenderStars noOfStars={item.rating} />
@@ -389,22 +409,26 @@ const Home = () => {
             ))}
           </Carousel>
         </div>
-      </section> */}
+      </section>
 
       {/* blogs */}
-      {/* <section className="bg-lightBlue pt-8 pb-11 mb-16">
-        <div className="max-w-7xl m-auto">
+      <section className="bg-lightBlue pt-8 pb-11 mb-16">
+        <div className={`max-w-7xl m-auto ${innerContainerStyling}`}>
           <p className="text-2xl mb-12">From our Blog.....</p>
-          <div className="grid grid-cols-3 justify-items-center gap-x-6">
+          <div className="grid sm:grid-cols-3 gap-y-20 justify-items-center gap-x-6">
             {blogData.map((item, i) => (
-              <div key={i}>
-                <Image src={item.img} alt="img" className="mb-8" />
-                <p>{item.text}</p>
+              <div key={i} className="max-sm:max-w-xs">
+                <Image
+                  src={item.img}
+                  alt="img"
+                  className="mb-8 max-sm:mx-auto rounded"
+                />
+                <p className="max-md:text-sm">{item.text}</p>
               </div>
             ))}
           </div>
         </div>
-      </section> */}
+      </section>
     </>
   );
 };
