@@ -245,15 +245,17 @@ const Home = () => {
 
       {/* explore short courses */}
       <section className="bg-bluePrimary pt-14 pb-16 px-1 mb-40">
-        <div className="wrapper flex items-center">
+        <div className="wrapper flex items-start">
           {coursesData.map((item, i) => (
             <div key={i} className="min-w-full text-white explore">
-              <div className="max-w-5xl max-xl:max-w-3xl max-lg:max-w-2xl m-auto w-full ">
-                <h2 className="mb-5">{item.title}</h2>
-                <p className="text-xl mb-7">{item.text}</p>
+              <div className="max-w-5xl m-auto w-full  flex flex-col items-start justify-center">
+                <div className="max-xs:max-w-xs max-sm:max-w-sm max-md:max-w-lg max-lg:max-w-xl max-w-3xl m-auto">
+                  <h2 className="mb-5">{item.title}</h2>
+                  <p className="text-xl mb-7">{item.text}</p>
 
-                <div className="max-w-3xl max-xl:max-w-2xl max-lg:max-w-xl">
-                  <Image src={item.img} alt="exploreCourses" />
+                  <div className="max-w-3xl max-xl:max-w-2xl max-lg:max-w-xl">
+                    <Image src={item.img} alt="exploreCourses" />
+                  </div>
                 </div>
               </div>
             </div>
