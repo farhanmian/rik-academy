@@ -11,8 +11,10 @@ const Layout: React.FC<{ children: JSX.Element | React.ReactNode }> = ({
   return (
     <>
       <Nav />
-      <main className={`${pathname !== "/" ? "mt-28" : ""}`}>{children}</main>
-      <Footer />
+      <main className={`${pathname !== "/" ? "mt-[79px] lg:mt-[93px]" : ""}`}>
+        {children}
+      </main>
+      {!pathname.includes("login") && <Footer />}
     </>
   );
 };

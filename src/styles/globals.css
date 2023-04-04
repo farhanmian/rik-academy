@@ -38,6 +38,10 @@ a {
   font-family: "Inter", sans-serif;
 }
 
+.otpContainer > span {
+  display: none;
+}
+
 h1,
 h2,
 h3,

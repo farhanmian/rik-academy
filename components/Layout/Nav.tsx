@@ -3,12 +3,15 @@ import Image from "next/image";
 import logo from "@/assets/img/logo.png";
 import Link from "next/link";
 import MenuIcon from "../icons/MenuIcon";
+import { useRouter } from "next/router";
 
 const navLinks = ["Home", "About", "Courses", "Blogs", "Contact"];
 
 const Nav = () => {
   const [navColor, setNavColor] = useState("text-white");
   const [showSidebar, setShowSidebar] = useState(false);
+
+  const { pathname } = useRouter();
 
   useEffect(() => {
     window.addEventListener("scroll", changeColor);
@@ -18,7 +21,7 @@ const Nav = () => {
     if (window.scrollY >= 100) {
       setNavColor("bg-white text-black shadow-md");
     } else {
-      setNavColor("text-white");
+      setNavColor(pathname === "/" ? "text-white" : "bg-white shadow-md");
     }
   };
 
