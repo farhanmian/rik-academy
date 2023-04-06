@@ -73,7 +73,7 @@ const LoginForm = () => {
               renderSeparator={<span>-</span>}
               renderInput={(props) => <input {...props} />}
               containerStyle="mb-8 mx-auto otpContainer gap-x-6"
-              inputStyle="border-b-2 border-bluePrimary text-xl focus:outline-none min-w-[80px]"
+              inputStyle="border-b-2 border-bluePrimary text-xl focus:outline-none min-w-[50px] sm:min-w-[80px]"
             />
           </>
         )}

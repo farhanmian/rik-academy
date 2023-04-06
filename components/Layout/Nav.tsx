@@ -54,7 +54,15 @@ const Nav = () => {
         `}
           >
             {navLinks.map((item) => (
-              <Link href={item} key={item} className="max-xs:text-lg">
+              <Link
+                href={
+                  item === "Home"
+                    ? "/"
+                    : item.toLowerCase().replaceAll(" ", "-")
+                }
+                key={item}
+                className="max-xs:text-lg"
+              >
                 {item}
               </Link>
             ))}

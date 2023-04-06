@@ -11,7 +11,7 @@ const Input: React.FC<{
   return (
     <input
       onChange={onChange}
-      className={`px-5 py-2.5 rounded focus:outline-none outline-bluePrimary border border-bluePrimary  ${classes}`}
+      className={`px-5 py-2.5 rounded focus:outline-none border border-bluePrimary  ${classes}`}
       placeholder={placeholder}
       value={value}
       type={type}

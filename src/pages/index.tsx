@@ -14,7 +14,9 @@ import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a lo
 import { Carousel } from "react-responsive-carousel";
 
 import aboutImg from "@/assets/img/about-academy.png";
-import exploreCourses from "@/assets/img/explore-courses.png";
+import exploreCourses1 from "@/assets/img/explore-courses-1.png";
+import exploreCourses2 from "@/assets/img/explore-courses-2.png";
+import exploreCourses3 from "@/assets/img/explore-courses-3.png";
 import benefitsOfCourses from "@/assets/img/benefits-of-courses.png";
 
 import AddIcon from "@/components/icons/AddIcon";
@@ -121,19 +123,37 @@ const blogData = [
 ];
 const coursesData = [
   {
-    img: exploreCourses,
+    img: exploreCourses1,
     title: "Explore Short Courses",
-    text: "Learn about the Blockchain Technology. Join us and explore the possibilities!",
+    text: (
+      <p className="text-md xs:text-lg md:text-xl ">
+        Learn about the{" "}
+        <span className="text-colorYellow">Blockchain Technology</span>. Join us
+        and explore the possibilities!
+      </p>
+    ),
   },
   {
-    img: exploreCourses,
+    img: exploreCourses2,
     title: "Access Resources",
-    text: "Gain access to a wide range of resources curated by professionals, including market reports, books, short courses, and more!",
+    text: (
+      <p className="text-md xs:text-lg md:text-xl ">
+        Learn about the{" "}
+        <span className="text-colorYellow">WEB 3.0 Technology</span>. Join us
+        and explore the possibilities!
+      </p>
+    ),
   },
   {
-    img: exploreCourses,
+    img: exploreCourses3,
     title: "Read Blogs",
-    text: "Read blogs that provide you with market insights, the latest news, and the best crypto content!",
+    text: (
+      <p className="text-md xs:text-lg md:text-xl ">
+        Explore a variety of courses on{" "}
+        <span className="text-colorYellow">Trading</span> created by our experts
+        and obtain certificate!
+      </p>
+    ),
   },
 ];
 const globalAlumniImgData = [
@@ -251,9 +271,9 @@ const Home = () => {
               <div className="max-w-5xl m-auto w-full  flex flex-col items-start justify-center">
                 <div className="max-xs:max-w-xs max-sm:max-w-sm max-md:max-w-lg max-lg:max-w-xl max-w-3xl m-auto">
                   <h2 className="mb-5">{item.title}</h2>
-                  <p className="text-xl mb-7">{item.text}</p>
+                  {item.text}
 
-                  <div className="max-w-3xl max-xl:max-w-2xl max-lg:max-w-xl">
+                  <div className="max-w-3xl max-xl:max-w-2xl max-lg:max-w-xl mt-7 ">
                     <Image src={item.img} alt="exploreCourses" />
                   </div>
                 </div>
