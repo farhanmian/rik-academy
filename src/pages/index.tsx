@@ -3,7 +3,7 @@ import Head from "next/head";
 import Image from "next/image";
 import styles from "@/src/styles/Home.module.css";
 import ButtonPrimary from "@/components/partials/ButtonPrimary";
-import TickIcon from "@/components/icons/TickIcon";
+import TickRoundedIcon from "@/components/icons/TickRoundedIcon";
 import Star from "@/components/icons/Star";
 
 import { gsap } from "gsap";
@@ -29,6 +29,8 @@ import globalAlumniImg1 from "@/assets/img/global-alumni-1.png";
 import globalAlumniImg2 from "@/assets/img/global-alumni-2.png";
 import globalAlumniImg3 from "@/assets/img/global-alumni-3.png";
 import globalAlumniImg4 from "@/assets/img/global-alumni-4.png";
+import RenderStars from "@/components/partials/RenderStars";
+import FaqComponent from "@/components/partials/FaqComponent";
 
 const coursesBenefits = [
   "Get hired easily",
@@ -99,7 +101,7 @@ const customerReview = [
   {
     img: userImg,
     text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
-    rating: 4,
+    rating: 4.5,
   },
   {
     img: userImg,
@@ -164,7 +166,6 @@ const globalAlumniImgData = [
 ];
 
 const Home = () => {
-  const [frequentQuestions, setFrequentQuestions] = useState<number[]>([]);
   const [customerReviewPage, setCustomerReviewPage] = useState(0);
 
   useEffect(() => {
@@ -190,17 +191,6 @@ const Home = () => {
     });
     return () => ctx.revert();
   }, []);
-
-  const toggleFrequentQuestionsHandler = (i: number) => {
-    if (frequentQuestions.includes(i)) {
-      // remove i from state
-      const updated = frequentQuestions.filter((item) => item !== i);
-      setFrequentQuestions(updated);
-    } else {
-      // add i to state
-      setFrequentQuestions((prev) => (prev.length > 0 ? [...prev, i] : [i]));
-    }
-  };
 
   const innerContainerStyling = "max-2xl:px-1 max-xl:px-4 max-xs:px-2";
 
@@ -301,7 +291,7 @@ const Home = () => {
                     coursesBenefits.length === i + 1 ? "" : "mb-5"
                   }`}
                 >
-                  <TickIcon />
+                  <TickRoundedIcon />
                   {item}
                 </li>
               ))}
@@ -339,37 +329,7 @@ const Home = () => {
           <h3 className="text-center mb-12">Frequently Asked Questions</h3>
 
           <div className="flex flex-col gap-y-8">
-            {frequentAskedQuestions.map((item, i) => (
-              <div
-                key={i}
-                className={`transition-all ${
-                  frequentQuestions.includes(i) ? "drop-shadow-md" : ""
-                }`}
-              >
-                <ButtonPrimary
-                  className="rounded-none min-w-full text-start py-5 max-sm:px-3 hover:drop-shadow-sm flex items-center gap-x-4 sm:gap-x-9"
-                  onClick={() => {
-                    toggleFrequentQuestionsHandler(i);
-                  }}
-                >
-                  <AddIcon
-                    className={`transition-all min-w-max ${
-                      frequentQuestions.includes(i) ? "-rotate-45" : ""
-                    }`}
-                  />
-                  {item.question}
-                </ButtonPrimary>
-                <div
-                  className={`w-full bg-lightBlue px-5 transition-all ${
-                    frequentQuestions.includes(i)
-                      ? "h-max py-6"
-                      : "h-0 overflow-hidden"
-                  }`}
-                >
-                  {item.answer}
-                </div>
-              </div>
-            ))}
+            <FaqComponent frequentAskedQuestions={frequentAskedQuestions} />
           </div>
         </div>
       </section>
@@ -424,7 +384,7 @@ const Home = () => {
                 <div className="xs:w-40 w-32 xs:h-40 h-32 mb-5">
                   <Image src={item.img} alt="user" className="rounded-full" />
                 </div>
-                <RenderStars noOfStars={item.rating} />
+                <RenderStars noOfStars={item.rating} starClasses="w-5 h-5" />
 
                 <p className="mt-12 mb-20">{item.text}</p>
               </div>
@@ -456,28 +416,3 @@ const Home = () => {
 };
 
 export default Home;
-
-const RenderStars: React.FC<{ noOfStars: number }> = ({ noOfStars }) => {
-  const [stars, setStars] = useState<boolean[]>([]);
-
-  useEffect(() => {
-    setStars([]);
-    for (let i = 0; i < 5; i++) {
-      if (i < noOfStars) {
-        // true
-        setStars((prev) => (prev.length > 0 ? [...prev, true] : [true]));
-      } else {
-        // false
-        setStars((prev) => (prev.length > 0 ? [...prev, false] : [false]));
-      }
-    }
-  }, [noOfStars]);
-
-  return (
-    <div className="flex items-center gap-x-1">
-      {stars.map((item, i) => (
-        <Star key={i} color={item ? "gold" : "white"} />
-      ))}
-    </div>
-  );
-};
