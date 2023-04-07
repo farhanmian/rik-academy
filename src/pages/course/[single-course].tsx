@@ -7,7 +7,7 @@ import FaqComponent from "@/components/partials/FaqComponent";
 import RenderStars from "@/components/partials/RenderStars";
 
 import img from "@/assets/img/single-course-img.png";
-import Cart from "@/components/partials/Cart";
+import CartPopup from "@/components/partials/CartPopup";
 
 import SingleCourseDetailCard from "@/components/app/SingleCourseDetailCard";
 
@@ -168,7 +168,7 @@ const SingleCourse = () => {
         </div>
       </section>
 
-      <Cart />
+      <CartPopup />
     </>
   );
 };

@@ -6,7 +6,7 @@ import img from "@/assets/img/single-course-img.png";
 import Link from "next/link";
 import ButtonPrimary from "./ButtonPrimary";
 
-const Cart = () => {
+const CartPopup = () => {
   return (
     <>
       <div className="fixed z-30 top-[20%] left-1/2 -translate-x-1/2 py-6 bg-white max-w-4xl w-full">
@@ -78,4 +78,4 @@ const Cart = () => {
   );
 };
 
-export default Cart;
+export default CartPopup;

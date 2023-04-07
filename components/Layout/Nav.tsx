@@ -21,14 +21,16 @@ const Nav = () => {
     if (window.scrollY >= 100) {
       setNavColor("bg-white text-black shadow-md");
     } else {
-      setNavColor(pathname === "/" ? "text-white" : "bg-white shadow-md");
+      setNavColor("text-white");
     }
   };
 
   return (
     <>
       <nav
-        className={`py-3 fixed max-lg:bg-white max-lg:text-black max-lg:font-semibold z-30 top-0 left-0 w-full transition-all ${navColor}`}
+        className={`py-3 fixed max-lg:bg-white max-lg:text-black max-lg:font-semibold z-30 top-0 left-0 w-full transition-all ${
+          pathname === "/" ? navColor : "bg-white shadow-md"
+        }`}
       >
         <div className="max-w-8xl m-auto flex items-center justify-between max-2xl:mx-4">
           <div className="w-40 max-lg:w-32">
