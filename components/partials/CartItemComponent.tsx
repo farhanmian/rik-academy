@@ -8,7 +8,7 @@ const CartItemComponent: React.FC<{
 }> = ({ img, className: classes = "" }) => {
   return (
     <div
-      className={`px-8 py-2.5 bg-lightBlue flex justify-between items-center mb-10 ${classes}`}
+      className={`px-8 py-2.5 bg-lightPurple flex justify-between items-center mb-10 ${classes}`}
     >
       <div className="flex items-center">
         <Image src={img} className="w-32 mr-5" alt="img" />

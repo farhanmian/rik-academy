@@ -122,7 +122,7 @@ const MakePayment = () => {
         Order details will be sent to your email address xyz@gmail.com
       </p>
 
-      <div className="bg-lightBlue px-5 py-4 font-semibold flex items-center justify-between mb-12">
+      <div className="bg-lightPurple px-5 py-4 font-semibold flex items-center justify-between mb-12">
         <p>Payable Amount</p>
         <p>
           <span className="font-extralight">₹</span>2500

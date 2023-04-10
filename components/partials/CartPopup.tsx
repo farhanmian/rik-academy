@@ -28,7 +28,7 @@ const CartPopup = () => {
           <p>Price</p>
         </div>
 
-        <div className="px-8 py-2.5 bg-lightBlue flex justify-between items-center mb-10">
+        <div className="px-8 py-2.5 bg-lightPurple flex justify-between items-center mb-10">
           <div className="flex items-center">
             <Image src={img} className="w-32 mr-5" alt="img" />
             <div>

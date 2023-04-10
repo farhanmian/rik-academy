@@ -8,8 +8,9 @@ module.exports = {
       },
       colors: {
         bluePrimary: "#3C50E0",
-        lightBlue: "#C1C9FF",
+        lightPurple: "#C1C9FF",
         colorYellow: "#E7C62F",
+        Purple: "#C1C9FF",
       },
       screens: {
         xs: "480px",

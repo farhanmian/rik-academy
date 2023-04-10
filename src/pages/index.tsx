@@ -227,7 +227,7 @@ const Home = () => {
       </header>
 
       {/* about */}
-      <section className="py-8 bg-lightBlue mb-40">
+      <section className="py-8 bg-lightPurple mb-40">
         <div
           className={`max-w-7xl m-auto flex max-md:flex-col-reverse items-center justify-between xl:gap-x-20 ${innerContainerStyling}`}
         >
@@ -274,7 +274,7 @@ const Home = () => {
       </section>
 
       {/* benefits of courses */}
-      <section className="pt-12 bg-lightBlue mb-40">
+      <section className="pt-12 bg-lightPurple mb-40">
         <div className={`max-w-7xl m-auto ${innerContainerStyling}`}>
           <h2 className="mb-9 text-bluePrimary">Benefits of Courses</h2>
 
@@ -305,7 +305,7 @@ const Home = () => {
       </section>
 
       {/* global alumni */}
-      <section className="bg-lightBlue mb-40 py-24">
+      <section className="bg-lightPurple mb-40 py-24">
         <div className={`max-w-6xl m-auto ${innerContainerStyling}`}>
           <p className="text-xl mb-4">HEAR IT FROM</p>
           <h2 className="text-white mb-12">Our Global Alumni</h2>
@@ -347,7 +347,7 @@ const Home = () => {
       </section>
 
       {/* customer review */}
-      <section className="bg-lightBlue pt-20 pb-5 mb-40">
+      <section className="bg-lightPurple pt-20 pb-5 mb-40">
         <div
           className={`max-w-7xl m-auto text-center relative ${innerContainerStyling}`}
         >
@@ -394,7 +394,7 @@ const Home = () => {
       </section>
 
       {/* blogs */}
-      <section className="bg-lightBlue pt-8 pb-11 mb-16">
+      <section className="bg-lightPurple pt-8 pb-11 mb-16">
         <div className={`max-w-7xl m-auto ${innerContainerStyling}`}>
           <p className="text-2xl mb-12">From our Blog.....</p>
           <div className="grid sm:grid-cols-3 gap-y-20 justify-items-center gap-x-6">

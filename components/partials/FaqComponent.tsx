@@ -41,7 +41,7 @@ const FaqComponent: React.FC<{
               {item.question}
             </ButtonPrimary>
             <div
-              className={`w-full bg-lightBlue px-5 transition-all ${
+              className={`w-full bg-lightPurple px-5 transition-all ${
                 isOpen ? "h-max py-6" : "h-0 overflow-hidden"
               }`}
             >
