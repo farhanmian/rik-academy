@@ -168,7 +168,7 @@ const SingleCourse = () => {
         </div>
       </section>
 
-      <CartPopup />
+      {/* <CartPopup /> */}
     </>
   );
 };
