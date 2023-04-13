@@ -1,0 +1,1 @@
+const basicInputTemplate = { value: "", error: "" };

@@ -40,6 +40,7 @@ const dropdownStyling =
   "px-4 py-2.5 rounded focus:outline-none border border-bluePrimary";
 
 const RegisterForm = () => {
+  const [form, setForm] = useState();
   const [captchaValue, setCaptchaValue] = useState("");
   const [captcha, setCaptcha] = useState("");
   const [region, setRegion] = useState("");

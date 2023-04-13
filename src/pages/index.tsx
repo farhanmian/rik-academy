@@ -207,8 +207,11 @@ const Home = () => {
         <div
           className={`m-auto max-w-7xl h-full flex items-end ${innerContainerStyling}`}
         >
-          <div className="max-w-xl mb-10">
-            <h1 className="mb-8">Empowering the future of decentralization</h1>
+          <div className="max-w-[100%] md:max-w-xl mb-10">
+            <h1 className="mb-8">
+              Join the digital revolution, and become a blockchain expert from
+              anywhere with our online courses
+            </h1>
             <div className="max-w-md mb-10 font-medium">
               <p className="mb-5">
                 Welcome to Rik Academy, here we provide comprehensive and

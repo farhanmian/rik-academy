@@ -29,7 +29,7 @@ const Nav = () => {
     <>
       <nav
         className={`py-3 fixed max-lg:bg-white max-lg:text-black max-lg:font-semibold z-30 top-0 left-0 w-full transition-all ${
-          pathname === "/" ? navColor : "bg-white shadow-md"
+          pathname === "/" ? navColor : "bg-white shadow-md text-black"
         }`}
       >
         <div className="max-w-8xl m-auto flex items-center justify-between max-2xl:mx-4">
