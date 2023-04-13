@@ -18,7 +18,7 @@ const Login = () => {
   }, [router, formType]);
 
   return (
-    <section className="bg-lightPurple min-h-screen flex justify-center items-center max-md:px-2">
+    <section className="bg-bluePrimary min-h-screen flex justify-center items-center max-md:px-2">
       <div className="bg-white rounded max-w-2xl w-full px-6 pt-5 pb-8">
         <div className="flex items-center gap-x-8 mb-10">
           {btns.map((item) => (
