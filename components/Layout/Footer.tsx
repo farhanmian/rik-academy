@@ -3,14 +3,12 @@ import Image from "next/image";
 import logo from "@/assets/img/logo.png";
 import Link from "next/link";
 
-import PhoneIcon from "../icons/PhoneIcon";
 import MessageIcon from "../icons/MessageIcon";
 
 import facebookImg from "@/assets/img/facebook.png";
 import instagramImg from "@/assets/img/instagram.png";
 import linkedinImg from "@/assets/img/linkedin.png";
 import youtubeImg from "@/assets/img/youtube.png";
-import LocationIcon from "../icons/LocationIcon";
 
 const footerLinks = [
   {
@@ -19,7 +17,7 @@ const footerLinks = [
   },
   {
     title: "About Us",
-    link: "/",
+    link: "about",
   },
   {
     title: "Courses",
@@ -27,19 +25,19 @@ const footerLinks = [
   },
   {
     title: "Disclaimer",
-    link: "/",
+    link: "disclaimer",
   },
   {
     title: "Refund Policy",
-    link: "/",
+    link: "refund",
   },
   {
     title: "Terms and Conditions",
-    link: "/",
+    link: "condition",
   },
   {
     title: "Privacy Policy",
-    link: "/",
+    link: "policy",
   },
 ];
 
@@ -92,19 +90,6 @@ const Footer = () => {
             <h5 className="lg:mb-10 mb-2">Contact Us</h5>
 
             <div className="lg:max-w-[250px]">
-              <span className="flex items-center gap-x-2.5 mb-4">
-                <LocationIcon />
-                <p>
-                  Manar Tower, B- 28, Block B, Sector 135, Noida, Uttar
-                  Pradesh-201304
-                </p>
-              </span>
-
-              <span className="flex items-center gap-x-2.5 mb-4">
-                <PhoneIcon />
-                <p>+91 9289790717</p>
-              </span>
-
               <span className="flex items-center gap-x-2.5">
                 <MessageIcon />
                 <p>support@rikacademy.com</p>

@@ -51,30 +51,27 @@ const blockchain_career = () => {
     <>
       <header className="mb-5">
         <div className="max-w-full max-h-[600px] overflow-hidden">
-          <Image src={img} alt="img" className="max-w-full max-h-full" />
+          <Image
+            src={img}
+            alt="img"
+            className="max-w-full h-[250px] md:h-[460px]"
+          />
         </div>
       </header>
 
       <section className="mb-16">
         <div className="max-w-4xl m-auto text-base text-lightGrey ">
-          <p className="my-10 mx-7 md:mx-3 ">
+          <p className="pt-5 mx-4 md:mx-1 ">
             Blockchain technology is a rapidly growing field, and there are many
             career opportunities available for those interested in exciting
             technology. Some of the career paths in blockchain technology
             include:
           </p>{" "}
-          <ul className="px-9 md:px-3">
+          <ul className="px-9 md:px-6">
             {blockchain.map((item, i) => {
               return (
-                <li
-                  key={i}
-                  className=" mb-6 p-3 rounded text-base hover:bg-lightPurple"
-                >
-                  <span className="pr-1">{item.no}</span>
-                  <span className="font-semibold list-decimal">
-                    {" "}
-                    {item.title}
-                  </span>
+                <li key={i} className=" my-4 p-2 list-decimal  text-base ">
+                  <span className="font-semibold "> {item.title}</span>
                   {item.text}
                 </li>
               );

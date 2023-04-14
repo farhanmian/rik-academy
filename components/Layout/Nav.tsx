@@ -4,14 +4,52 @@ import logo from "@/assets/img/logo.png";
 import Link from "next/link";
 import MenuIcon from "../icons/MenuIcon";
 import { useRouter } from "next/router";
+import { IoMdArrowDropdown, IoMdArrowDropup } from "react-icons/io";
 
-const navLinks = ["Home", "About", "Courses", "Blogs", "Contact"];
+// const navLinks = ["Home", "About", "Courses", "Blogs"];
+const AboutLinks = [
+  {
+    title: "About Us",
+    link: "about",
+  },
+  {
+    title: "Why Study Blockchain?",
+    link: "study-blockchain",
+  },
+  {
+    title: "Blockchain Careees",
+    link: "blockchain-career",
+  },
+];
+const CoursesLinks = [
+  {
+    title: "Web 3.0",
+    link: "web",
+  },
+  {
+    title: "Blockchain Courses",
+    link: "blockchain-course",
+  },
+  {
+    title: "Trading",
+    link: "trading",
+  },
+];
 
 const Nav = () => {
+  const { pathname } = useRouter();
+  const [dropDown, setDropDown] = useState<"About" | "Courses" | "Blogs" | "">(
+    ""
+  );
+  const [navbar, setNavbar] = useState(false);
+
+  useEffect(() => {
+    setDropDown("");
+    setNavbar(false);
+  }, [pathname]);
+
   const [navColor, setNavColor] = useState("text-white");
   const [showSidebar, setShowSidebar] = useState(false);
-
-  const { pathname } = useRouter();
 
   useEffect(() => {
     window.addEventListener("scroll", changeColor);
@@ -55,22 +93,45 @@ const Nav = () => {
         }
         `}
           >
-            {navLinks.map((item) => (
-              <Link
-                href={
-                  item === "Home"
-                    ? "/"
-                    : item.toLowerCase().replaceAll(" ", "-")
-                }
-                key={item}
-                className="max-xs:text-lg"
-              >
-                {item}
-              </Link>
-            ))}
-            <button className="px-8 py-3 w-max bg-colorYellow rounded text-black font-semibold">
-              Login
-            </button>
+            <Link
+              href={"/"}
+              className="md:hover:text-bluePrimary font-medium md:font-normal text-xl md:text-base"
+            >
+              Home
+            </Link>
+            <NavDropdownLink
+              title=" About"
+              onClick={() => {
+                dropDown === "About" ? setDropDown("") : setDropDown("About");
+              }}
+              links={AboutLinks}
+              dropDownCondition={dropDown === "About"}
+            />
+
+            <NavDropdownLink
+              title="Courses"
+              onClick={() => {
+                dropDown === "Courses"
+                  ? setDropDown("")
+                  : setDropDown("Courses");
+              }}
+              links={CoursesLinks}
+              dropDownCondition={dropDown === "Courses"}
+            />
+            <Link
+              href="#Blogs"
+              className="md:hover:text-bluePrimary font-medium md:font-normal text-xl md:text-base"
+            >
+              {" "}
+              Blogs
+            </Link>
+
+            <Link href="login">
+              {" "}
+              <button className="px-8 py-3 w-max bg-colorYellow rounded text-black font-semibold">
+                Login
+              </button>
+            </Link>
           </div>
         </div>
       </nav>
@@ -88,6 +149,49 @@ const Nav = () => {
 };
 
 export default Nav;
+
+const NavDropdownLink: React.FC<{
+  title: string;
+  onClick: () => void;
+  links: typeof AboutLinks;
+  dropDownCondition: boolean;
+}> = ({ onClick, title, links, dropDownCondition }) => {
+  const { asPath } = useRouter();
+  const pagePath = asPath.replace("/", "");
+
+  return (
+    <div className="relative">
+      <button
+        onClick={onClick}
+        className="bg-transparent md:hover:text-bluePrimary flex items-center justify-between gap-x-2 max-md:mb-1"
+      >
+        {title}
+        <span className="hidden max-md:inline-block">
+          {!dropDownCondition ? <IoMdArrowDropdown /> : <IoMdArrowDropup />}
+        </span>
+      </button>
+
+      {dropDownCondition && (
+        <div className="flex flex-col gap-y-1 md:w-56 md:absolute right-0 md:shadow-md md:border md:mt-5 max-md:pl-3 bg-white py-1 rounded-md border-bluePrimary text-sm font-normal text-lightPurple ">
+          {links.map((item) => {
+            return (
+              <a
+                target="_blank"
+                rel="noreferrer"
+                href={item.link}
+                className={`md:hover:bg-lightPurple text-black md:hover:text-bluePrimary max-md:active:bg-lightPurple max-md:active:text-sky-500 md:px-4 px-2 py-1.5 ${
+                  pagePath === item.link ? "bg-lightPurple" : ""
+                }`}
+              >
+                {item.title}
+              </a>
+            );
+          })}
+        </div>
+      )}
+    </div>
+  );
+};
 
 /*
 
