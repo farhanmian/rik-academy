@@ -16,14 +16,18 @@ const study_Blockchain = () => {
     <>
       <header className="mb-16">
         <div className="max-w-full max-h-[600px] overflow-hidden">
-          <Image src={img} alt="img" className="max-w-full max-h-full" />
+          <Image
+            src={img}
+            alt="img"
+            className="max-w-full h-[250px] md:h-[460px]"
+          />
         </div>
       </header>
 
       <section className="mb-12 m-2">
-        <div className="max-w-4xl mt-10 m-auto text-base font-medium text-lightGrey ">
+        <div className="max-w-4xl mt-10 m-auto text-base  text-lightGrey ">
           {Blockchain.map((item) => (
-            <p className="my-6  p-3 " key={item}>
+            <p className="my-1  p-2 " key={item}>
               {item}
             </p>
           ))}

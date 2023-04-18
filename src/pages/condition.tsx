@@ -45,11 +45,15 @@ const condition = () => {
   return (
     <>
       <header className="z-0  ">
-        <div className="max-w-full max-h-[500px]  mx-auto ">
-          <Image src={img} alt="img" className="max-w-full max-h-full  z-0" />
+        <div className="max-w-full max-h-[600px]  mx-auto ">
+          <Image
+            src={img}
+            alt="img"
+            className="max-w-full h-[250px] md:h-[460px] max-h-[600px]"
+          />
         </div>
       </header>
-      <section className="z-30 -mt-8  relative   mx-8">
+      <section className="z-10 -mt-8  relative   mx-8">
         <div className=" max-w-7xl  m-auto text-base text-lightGrey  shadow-xl   bg-white shadow-lightPurple  px-10 pt-9">
           {conditions.map((item, i) => (
             <div key={i}>

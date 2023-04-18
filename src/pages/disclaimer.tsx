@@ -52,10 +52,14 @@ const disclaimer = () => {
     <>
       <header className="z-0  ">
         <div className="max-w-full max-h-[500px]  mx-auto ">
-          <Image src={img} alt="img" className="max-w-full max-h-full  z-0" />
+          <Image
+            src={img}
+            alt="img"
+            className="max-w-full h-[250px] md:h-[460px]"
+          />
         </div>
       </header>
-      <section className="z-30 -mt-7 relative   mx-8">
+      <section className="z-10 -mt-7 relative   mx-8">
         <div className=" max-w-7xl  m-auto text-base text-lightGrey  shadow-xl   bg-white shadow-lightPurple  md:px-20  px-6 pt-7">
           {disclaimers.map((item, i) => (
             <div key={i}>

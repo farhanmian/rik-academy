@@ -51,7 +51,11 @@ const blockchain_course = () => {
     <>
       <header className="md:mb-16 mb-5">
         <div className="max-w-full max-h-[600px] overflow-hidden">
-          <Image src={img} alt="img" className="max-w-full max-h-full" />
+          <Image
+            src={img}
+            alt="img"
+            className="max-w-full h-[250px] md:h-[460px] max-h-[600px]"
+          />
         </div>
       </header>
 
@@ -68,29 +72,33 @@ const blockchain_course = () => {
               <Image
                 src={item.img}
                 alt="img"
-                className="max-w-[413] max-h-[260]  fill-slate-900"
+                className="max-w-[413] max-h-[260]  "
               />
-              <h1 className="text-2xl py-6 font-semibold">{item.title}</h1>
-              <p className=" font-semibold mb-1">{item.course}</p>
-              <div className="h-[275px] mb-7">
-                <ul className=" px-4 pb-4 md:pb-16 ">
-                  {item.web.map((item, i) => {
-                    return (
-                      <li key={i} className=" mb-1 list-disc ">
-                        {item}
-                      </li>
-                    );
-                  })}
-                </ul>
+              <div className="max-w-[413] max-h-[292] mb-7">
+                <h1 className="text-2xl py-6 font-semibold">{item.title}</h1>
+                <p className=" font-semibold mb-1">{item.course}</p>
+                <div className="max-h-[205px]  h-[200px] mb-7">
+                  <ul className=" px-4 list-disc  ">
+                    {item.web.map((item, i) => {
+                      return (
+                        <li key={i} className=" mb-1  ">
+                          {item}
+                        </li>
+                      );
+                    })}
+                  </ul>
+                </div>
               </div>
 
-              <Button
-                classes=" w-full text-bluePrimary hover:text-white my-4"
-                py="py-2.5"
-                px="px-8"
-              >
-                Enroll Course
-              </Button>
+              <div className="py-5">
+                <Button
+                  classes=" w-full text-bluePrimary hover:text-white my-4"
+                  py="py-2.5"
+                  px="px-8"
+                >
+                  Enroll Course
+                </Button>
+              </div>
             </div>
           </Card>
         ))}

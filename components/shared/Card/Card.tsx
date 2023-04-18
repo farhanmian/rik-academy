@@ -6,7 +6,7 @@ const Card: React.FC<{
 }> = ({ children, classes }) => {
   return (
     <div
-      className={`shadow-md ${classes}  rounded-xl max-w-[443px] border-stoke  relative border-[1px]   `}
+      className={`shadow-md ${classes}  rounded-xl max-w-[443px] max-h-[718px] border-stoke  relative border-[1px]   `}
     >
       {children}
     </div>
