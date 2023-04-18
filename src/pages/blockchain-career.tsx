@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image";
-import img from "../../assets/img/blockchain-career.png";
+import img from "../../assets/img/blockchain-career.jpg";
 
 const blockchain_career = () => {
   const blockchain = [
@@ -47,6 +47,7 @@ const blockchain_career = () => {
       text: " Blockchain quality engineer is responsible for ensuring the quality and reliability of blockchain-based systems and applications. They design, develop and execute test plans and procedures to identify and resolve defects, as well as collaborate with developers to improve the performance and fuctionalities of blockchain technologies.",
     },
   ];
+
   return (
     <>
       <header className="mb-5">
@@ -54,7 +55,7 @@ const blockchain_career = () => {
           <Image
             src={img}
             alt="img"
-            className="max-w-full h-[250px] md:h-[460px]"
+            className="max-w-full w-full h-full min-h-[200px]"
           />
         </div>
       </header>

@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image";
-import img from "../../assets/img/about.png";
+import img from "../../assets/img/about.jpg";
 
 const about = () => {
   const Blockchain = [

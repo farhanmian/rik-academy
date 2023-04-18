@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image";
-import img from "../../assets/img/Why-Study-Blockchain.jpg";
+import img from "../../assets/img/why-study-blockchain.jpg";
 
 const study_Blockchain = () => {
   const Blockchain = [
@@ -19,7 +19,7 @@ const study_Blockchain = () => {
           <Image
             src={img}
             alt="img"
-            className="max-w-full h-[250px] md:h-[460px]"
+            className="max-w-full w-full h-full min-h-[200px]"
           />
         </div>
       </header>

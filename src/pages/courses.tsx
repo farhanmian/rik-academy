@@ -1,17 +1,19 @@
 import React from "react";
 import Image from "next/image";
-import img from "../../assets/img/blockchain-courses.jpg";
+import img from "../../assets/img/blockchain-courses.png";
 import blockchainTechnology from "../../assets/img/blockchain-Technology.png";
 import blockchainTech from "../../assets/img/blockchainTech.png";
 import blockchainDev from "../../assets/img/blockchian-dev.jpg";
 import Card from "../../components/shared/Card/Card";
 import Button from "../../components/shared/Button/Button";
+import CourseCard from "@/components/partials/CourseCard";
 
 const blockchain_course = () => {
   const blockchain = [
     {
       img: blockchainTech,
       title: " Blockchain Technology",
+      isComingSoon: true,
       course: "Module : Basics of Blockchain Technology",
       web: [
         "What is blockchain Technology?",
@@ -25,6 +27,7 @@ const blockchain_course = () => {
     {
       img: blockchainTechnology,
       title: " Blockchain Technology",
+      isComingSoon: true,
       course: "Module : Introduction to Blockchain Technology",
       web: [
         "What is blockchain Technology?",
@@ -37,6 +40,7 @@ const blockchain_course = () => {
     {
       img: blockchainDev,
       title: " Blockchain Development",
+      isComingSoon: true,
       course: "Module : Introduction to Blockchain Development",
       web: [
         "Blockchain Development Basics (languages, tools and frameworks)",
@@ -54,54 +58,24 @@ const blockchain_course = () => {
           <Image
             src={img}
             alt="img"
-            className="max-w-full h-[250px] md:h-[460px] max-h-[600px]"
+            className="max-w-full w-full h-full min-h-[200px]"
           />
         </div>
       </header>
 
-      <section className="my-12 md:mx-12 justify-center md:justify-start grid md:grid-cols-2 lg:grid-cols-3  gap-y-20 gap-x-12  mx-3 ">
-        {blockchain.map((item, i) => (
-          <Card key={i}>
-            <div className=" absolute max-w-[150px] items-center text-center  z-20 font-semibold  text-[#E7C62F] text-4xl  px-28 py-72 ">
-              {" "}
-              Coming <br />
-              <span className="px-4 text-4xl font-semibold">Soon</span>
-            </div>
-            <div className=" text-center rounded-xl absolute bg-[#000000] opacity-50  z-10 h-full w-full  justify-center  items-center text-xl font-semibold  mx-auto "></div>
-            <div className="md:max-w-[413]  max-w-[300]   text-base  text-lightGrey p-4    ">
-              <Image
-                src={item.img}
-                alt="img"
-                className="max-w-[413] max-h-[260]  "
-              />
-              <div className="max-w-[413] max-h-[292] mb-7">
-                <h1 className="text-2xl py-6 font-semibold">{item.title}</h1>
-                <p className=" font-semibold mb-1">{item.course}</p>
-                <div className="max-h-[205px]  h-[200px] mb-7">
-                  <ul className=" px-4 list-disc  ">
-                    {item.web.map((item, i) => {
-                      return (
-                        <li key={i} className=" mb-1  ">
-                          {item}
-                        </li>
-                      );
-                    })}
-                  </ul>
-                </div>
-              </div>
-
-              <div className="py-5">
-                <Button
-                  classes=" w-full text-bluePrimary hover:text-white my-4"
-                  py="py-2.5"
-                  px="px-8"
-                >
-                  Enroll Course
-                </Button>
-              </div>
-            </div>
-          </Card>
-        ))}
+      <section className="mt-16 mb-20 max-2xl:px-3">
+        <div className="max-w-8xl mx-auto grid sm:grid-cols-2 lg:grid-cols-3 gap-x-3 xl:gap-x-6 gap-y-10 justify-items-center">
+          {blockchain.map((item, i) => (
+            <CourseCard
+              img={item.img}
+              title={item.title}
+              moduleName={item.course}
+              courseTopics={item.web}
+              isComingSoon={item.isComingSoon}
+              key={i}
+            />
+          ))}
+        </div>
       </section>
     </>
   );

@@ -5,9 +5,9 @@ import Link from "next/link";
 import MenuIcon from "../icons/MenuIcon";
 import { useRouter } from "next/router";
 import { IoMdArrowDropdown, IoMdArrowDropup } from "react-icons/io";
+import ClickAwayListener from "react-click-away-listener";
 
-// const navLinks = ["Home", "About", "Courses", "Blogs"];
-const AboutLinks = [
+const aboutLinks = [
   {
     title: "About Us",
     link: "about",
@@ -21,7 +21,7 @@ const AboutLinks = [
     link: "blockchain-career",
   },
 ];
-const CoursesLinks = [
+const coursesLinks = [
   {
     title: "Web 3.0",
     link: "web",
@@ -104,7 +104,7 @@ const Nav = () => {
               onClick={() => {
                 dropDown === "About" ? setDropDown("") : setDropDown("About");
               }}
-              links={AboutLinks}
+              links={aboutLinks}
               dropDownCondition={dropDown === "About"}
             />
 
@@ -115,7 +115,7 @@ const Nav = () => {
                   ? setDropDown("")
                   : setDropDown("Courses");
               }}
-              links={CoursesLinks}
+              links={coursesLinks}
               dropDownCondition={dropDown === "Courses"}
             />
             <Link
@@ -153,7 +153,7 @@ export default Nav;
 const NavDropdownLink: React.FC<{
   title: string;
   onClick: () => void;
-  links: typeof AboutLinks;
+  links: typeof aboutLinks;
   dropDownCondition: boolean;
 }> = ({ onClick, title, links, dropDownCondition }) => {
   const { asPath } = useRouter();

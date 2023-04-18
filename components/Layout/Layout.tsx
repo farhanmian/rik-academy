@@ -18,7 +18,11 @@ const Layout: React.FC<{ children: JSX.Element | React.ReactNode }> = ({
         <link rel="icon" href="/favicon.png" />
       </Head>
       <Nav />
-      <main className={`${pathname !== "/" ? "mt-[79px] lg:mt-[93px]" : ""}`}>
+      <main
+        className={`${
+          pathname !== "/" ? "mt-[79px] lg:mt-[93px]" : "max-lg:mt-16"
+        }`}
+      >
         {children}
       </main>
       {!pathname.includes("login") && <Footer />}

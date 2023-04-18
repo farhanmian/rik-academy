@@ -51,11 +51,11 @@ const disclaimer = () => {
   return (
     <>
       <header className="z-0  ">
-        <div className="max-w-full max-h-[500px]  mx-auto ">
+        <div className="max-w-full max-h-[600px] overflow-hidden">
           <Image
             src={img}
             alt="img"
-            className="max-w-full h-[250px] md:h-[460px]"
+            className="max-w-full w-full h-full min-h-[200px]"
           />
         </div>
       </header>
