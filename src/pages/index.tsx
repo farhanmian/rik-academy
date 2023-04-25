@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import Head from "next/head";
 import Image from "next/image";
 import styles from "@/src/styles/Home.module.css";
@@ -169,8 +169,10 @@ const globalAlumniImgData = [
 
 const Home = () => {
   const [customerReviewPage, setCustomerReviewPage] = useState(0);
+  const [isMobile, setIsMobile] = useState(true);
 
   useEffect(() => {
+    if (isMobile) return;
     let ctx = gsap.context(() => {
       gsap.registerPlugin(ScrollTrigger);
       const tl = gsap.timeline();
@@ -192,7 +194,14 @@ const Home = () => {
       });
     });
     return () => ctx.revert();
-  }, []);
+  }, [isMobile]);
+
+  useEffect(() => {
+    const deviceType = window.navigator.userAgent.includes("Mobile");
+    setIsMobile(deviceType);
+  }, [isMobile]);
+
+  console.log("ismobile:", isMobile);
 
   const innerContainerStyling = "max-2xl:px-1 max-xl:px-4 max-xs:px-2";
 
@@ -252,8 +261,12 @@ const Home = () => {
       </section>
 
       {/* explore short courses */}
-      <section className="bg-bluePrimary pt-14 pb-16 px-1 mb-40">
-        <div className="wrapper flex items-start">
+      <section
+        className={`bg-bluePrimary pt-14 pb-16 px-1 mb-40 ${
+          isMobile ? "overflow-x-auto" : ""
+        }`}
+      >
+        <div className="wrapper flex max-sm:gap-x-20 items-start">
           {coursesData.map((item, i) => (
             <div key={i} className="min-w-full text-white explore">
               <div className="max-w-5xl m-auto w-full  flex flex-col items-start justify-center">

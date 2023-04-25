@@ -1,9 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import img from "../../assets/img/trading.png";
-import Card from "../../components/shared/Card/Card";
 import cryptocurrency from "../../assets/img/cryptocurr.jpg";
-import Button from "../../components/shared/Button/Button";
 import cryptotrading from "../../assets/img/cryptoTrading.jpg";
 import CourseCard from "@/components/partials/CourseCard";
 
