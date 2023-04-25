@@ -10,7 +10,7 @@ import ClickAwayListener from "react-click-away-listener";
 const aboutLinks = [
   {
     title: "About Us",
-    link: "about",
+    link: "About",
   },
   {
     title: "Why Study Blockchain?",

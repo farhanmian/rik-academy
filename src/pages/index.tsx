@@ -5,10 +5,15 @@ import styles from "@/src/styles/Home.module.css";
 import ButtonPrimary from "@/components/partials/ButtonPrimary";
 import TickRoundedIcon from "@/components/icons/TickRoundedIcon";
 import Star from "@/components/icons/Star";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import CountUp from "react-countup";
 
 import { gsap } from "gsap";
 
 import { ScrollTrigger } from "@/assets/gsap/src/ScrollTrigger";
+import ScrollTriggera from "react-scroll-trigger";
 
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from "react-responsive-carousel";
@@ -33,6 +38,7 @@ import globalAlumniImg3 from "@/assets/img/global-alumni-3.png";
 import globalAlumniImg4 from "@/assets/img/global-alumni-4.png";
 import RenderStars from "@/components/partials/RenderStars";
 import FaqComponent from "@/components/partials/FaqComponent";
+import Type from "@/components/partials/Type";
 
 const coursesBenefits = [
   "Get hired easily",
@@ -82,18 +88,63 @@ const frequentAskedQuestions = [
 ];
 const websiteData = [
   {
-    title: "Online Students",
-    numbers: 12500,
-  },
-  {
-    title: "Batches",
-    numbers: 200,
-  },
-  {
     title: "Courses",
     numbers: 10,
   },
+  {
+    title: "Batches",
+    numbers: 15,
+  },
+
+  {
+    title: " Hours Video",
+    numbers: 100,
+  },
 ];
+const settings = {
+  infinite: true,
+  slidesToShow: 2,
+  slidesToScroll: 1,
+  autoplay: true,
+  speed: 3000,
+  autoplaySpeed: 100,
+  cssEase: "linear",
+  responsive: [
+    {
+      breakpoint: 1024,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 1,
+        infinite: true,
+        autoplay: true,
+        speed: 3000,
+        autoplaySpeed: 100,
+      },
+    },
+    {
+      breakpoint: 600,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        infinite: true,
+        autoplay: true,
+        speed: 3000,
+        autoplaySpeed: 100,
+      },
+    },
+    {
+      breakpoint: 480,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        infinite: true,
+        autoplay: true,
+        speed: 3000,
+        autoplaySpeed: 100,
+      },
+    },
+  ],
+};
 const customerReview = [
   {
     img: userImg1,
@@ -163,13 +214,15 @@ const coursesData = [
 const globalAlumniImgData = [
   globalAlumniImg1,
   globalAlumniImg2,
-  globalAlumniImg3,
-  globalAlumniImg4,
+  globalAlumniImg1,
+  globalAlumniImg2,
 ];
 
 const Home = () => {
   const [customerReviewPage, setCustomerReviewPage] = useState(0);
   const [isMobile, setIsMobile] = useState(true);
+
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     if (isMobile) return;
@@ -213,8 +266,11 @@ const Home = () => {
         >
           <div className="max-w-[100%] md:max-w-xl mb-10">
             <h1 className="mb-8">
-              Join the digital revolution, and become a blockchain expert from
-              anywhere with our online courses
+              Join the digital revolution,
+              <div className="h-40 md:h-44">
+                {" "}
+                <Type />
+              </div>
             </h1>
             <div className="max-w-md mb-10 font-medium">
               <p className="mb-5">
@@ -294,7 +350,7 @@ const Home = () => {
               <Image src={benefitsOfCourses} alt="img" />
             </div>
 
-            <div className="max-xl:pb-10">
+            <div className="max-xl:pb-10 m-3 md:m-0">
               {coursesBenefits.map((item, i) => (
                 <li
                   key={item}
@@ -307,7 +363,7 @@ const Home = () => {
                 </li>
               ))}
 
-              <ButtonPrimary className="px-14 mt-12">
+              <ButtonPrimary className="px-14  mt-12">
                 {"Get Certificate Now>>>"}
               </ButtonPrimary>
             </div>
@@ -321,15 +377,15 @@ const Home = () => {
           <p className="text-xl mb-4">HEAR IT FROM</p>
           <h2 className="text-white mb-12">Our Global Alumni</h2>
 
-          <div className="grid sm:grid-cols-2 md:grid-cols-4 justify-items-center gap-x-10 gap-y-10">
-            {globalAlumniImgData.map((item, i) => (
-              <Image
-                key={i}
-                src={item}
-                alt="globalAlumniImg"
-                className="max-md:w-52"
-              />
-            ))}
+          <div className="cursor-pointer    w-full ">
+            <Slider {...settings}>
+              {globalAlumniImgData.map((item, i) => (
+                <div className="flex flex-row items-center mx-auto justify-center m-7  p-3 gap-5">
+                  {" "}
+                  <Image src={item} alt="img" />
+                </div>
+              ))}
+            </Slider>
           </div>
         </div>
       </section>
@@ -351,7 +407,23 @@ const Home = () => {
           {websiteData.map((item) => (
             <div key={item.title}>
               <div className="flex flex-row text-center justify-items-center">
-                <h2>{item.numbers}</h2>
+                <h2>
+                  <ScrollTriggera
+                    onEnter={() => setLoading(true)}
+                    onExit={() => {
+                      setLoading(false);
+                    }}
+                  >
+                    {loading && (
+                      <CountUp
+                        start={0}
+                        end={item.numbers}
+                        duration={3}
+                        delay={0}
+                      />
+                    )}
+                  </ScrollTriggera>
+                </h2>
                 <AddIcon className="my-auto text-2xl" />
               </div>
 
