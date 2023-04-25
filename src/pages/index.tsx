@@ -333,7 +333,7 @@ const Home = () => {
           <h2 className="mb-9 text-bluePrimary">Benefits of Courses</h2>
 
           <div className="flex items-center max-xl:items-end xl:gap-x-28 justify-between lg:justify-around">
-            <div className="max-xl:max-w-md  hidden md:block">
+            <div className="max-xl:max-w-md max-lg:hidden">
               <Image src={benefitsOfCourses} alt="img" />
             </div>
 
