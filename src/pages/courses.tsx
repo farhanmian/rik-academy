@@ -4,8 +4,6 @@ import img from "../../assets/img/blockchain-courses.png";
 import blockchainTechnology from "../../assets/img/blockchain-Technology.png";
 import blockchainTech from "../../assets/img/blockchainTech.png";
 import blockchainDev from "../../assets/img/blockchian-dev.jpg";
-import Card from "../../components/shared/Card/Card";
-import Button from "../../components/shared/Button/Button";
 import CourseCard from "@/components/partials/CourseCard";
 
 const blockchain_course = () => {

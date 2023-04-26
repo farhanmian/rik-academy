@@ -7,6 +7,7 @@ import {
 
 import ButtonPrimary from "@/components/partials/ButtonPrimary";
 import ReloadIcon from "@/components/icons/ReloadIcon";
+import useAuthState from "@/utils/useAuthState";
 
 const fields = [
   {
@@ -40,7 +41,7 @@ const dropdownStyling =
   "px-4 py-2.5 rounded focus:outline-none border border-bluePrimary";
 
 const RegisterForm = () => {
-  const [form, setForm] = useState();
+  const { registerForm, handleRegisterForm, postRegisterForm } = useAuthState();
   const [captchaValue, setCaptchaValue] = useState("");
   const [captcha, setCaptcha] = useState("");
   const [region, setRegion] = useState("");

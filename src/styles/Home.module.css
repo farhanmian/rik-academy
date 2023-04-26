@@ -5,7 +5,9 @@
   background-position-x: right;
   height: 750px;
   margin-bottom: 80px;
+  background-size: 100%;
 }
+
 /* 
 @media only screen and (max-width: 1400px) {
   .header {
