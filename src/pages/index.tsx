@@ -9,11 +9,9 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import CountUp from "react-countup";
-
 import { gsap } from "gsap";
 
-import { ScrollTrigger } from "@/assets/gsap/src/ScrollTrigger";
-import ScrollTriggera from "react-scroll-trigger";
+import { ScrollTrigger as GsapScrollTrigger } from "@/assets/gsap/src/ScrollTrigger";
 
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from "react-responsive-carousel";
@@ -221,13 +219,12 @@ const globalAlumniImgData = [
 const Home = () => {
   const [customerReviewPage, setCustomerReviewPage] = useState(0);
   const [isMobile, setIsMobile] = useState(true);
-
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     if (isMobile) return;
     let ctx = gsap.context(() => {
-      gsap.registerPlugin(ScrollTrigger);
+      gsap.registerPlugin(GsapScrollTrigger);
       const tl = gsap.timeline();
       const sections = gsap.utils.toArray(".explore");
 
@@ -236,7 +233,7 @@ const Home = () => {
         xPercent: -100 * (sections.length - 1),
       });
 
-      ScrollTrigger.create({
+      GsapScrollTrigger.create({
         animation: tl,
         trigger: ".wrapper",
         start: "center center",
@@ -254,7 +251,27 @@ const Home = () => {
     setIsMobile(deviceType);
   }, [isMobile]);
 
-  console.log("ismobile:", isMobile);
+  useEffect(() => {
+    if (loading) return;
+    const container = document.querySelector(
+      "#websiteDataContainer"
+    ) as Element;
+    const observer: IntersectionObserver = new IntersectionObserver(
+      onElementInView
+    );
+
+    observer.observe(container);
+  }, []);
+
+  const onElementInView: IntersectionObserverCallback = (entries) => {
+    entries.forEach((entry: { isIntersecting: boolean }) => {
+      if (entry.isIntersecting) {
+        // do something when the element comes into view
+        console.log("testing");
+        setLoading(true);
+      }
+    });
+  };
 
   const innerContainerStyling = "max-2xl:px-1 max-xl:px-4 max-xs:px-2";
 
@@ -380,8 +397,10 @@ const Home = () => {
           <div className="cursor-pointer    w-full ">
             <Slider {...settings}>
               {globalAlumniImgData.map((item, i) => (
-                <div className="flex flex-row items-center mx-auto justify-center m-7  p-3 gap-5">
-                  {" "}
+                <div
+                  key={i}
+                  className="flex flex-row items-center mx-auto justify-center m-7  p-3 gap-5"
+                >
                   <Image src={item} alt="img" />
                 </div>
               ))}
@@ -403,26 +422,22 @@ const Home = () => {
 
       {/* courses, students, and branches */}
       <section className="bg-bluePrimary py-20 mb-28">
-        <div className="max-w-6xl m-auto grid xs:grid-cols-3 gap-y-10 max-xs:text-center text-white justify-items-center">
+        <div
+          id="websiteDataContainer"
+          className="max-w-6xl m-auto grid xs:grid-cols-3 gap-y-10 max-xs:text-center text-white justify-items-center"
+        >
           {websiteData.map((item) => (
             <div key={item.title}>
               <div className="flex flex-row text-center justify-items-center">
                 <h2>
-                  <ScrollTriggera
-                    onEnter={() => setLoading(true)}
-                    onExit={() => {
-                      setLoading(false);
-                    }}
-                  >
-                    {loading && (
-                      <CountUp
-                        start={0}
-                        end={item.numbers}
-                        duration={3}
-                        delay={0}
-                      />
-                    )}
-                  </ScrollTriggera>
+                  {loading && (
+                    <CountUp
+                      start={0}
+                      end={item.numbers}
+                      duration={3}
+                      delay={0}
+                    />
+                  )}
                 </h2>
                 <AddIcon className="my-auto text-2xl" />
               </div>
