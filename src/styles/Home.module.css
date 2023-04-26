@@ -1,12 +1,12 @@
 .header {
-  background-image: url(../../assets/img/header-img.png);
+  background-image: url(../../assets/img/header-img.jpg);
   background-repeat: no-repeat;
   background-size: contain;
   background-position-x: right;
-  height: 840px;
+  height: 750px;
   margin-bottom: 80px;
 }
-
+/* 
 @media only screen and (max-width: 1400px) {
   .header {
     background-size: 70%;
@@ -29,4 +29,4 @@
   .header {
     background-size: 90%;
   }
-}
+} */

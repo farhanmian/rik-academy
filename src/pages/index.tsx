@@ -5,10 +5,15 @@ import styles from "@/src/styles/Home.module.css";
 import ButtonPrimary from "@/components/partials/ButtonPrimary";
 import TickRoundedIcon from "@/components/icons/TickRoundedIcon";
 import Star from "@/components/icons/Star";
+import CountUp from "react-countup";
 
 import { gsap } from "gsap";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 import { ScrollTrigger } from "@/assets/gsap/src/ScrollTrigger";
+import ScrollTriggera from "react-scroll-trigger";
 
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from "react-responsive-carousel";
@@ -33,6 +38,7 @@ import globalAlumniImg3 from "@/assets/img/global-alumni-3.png";
 import globalAlumniImg4 from "@/assets/img/global-alumni-4.png";
 import RenderStars from "@/components/partials/RenderStars";
 import FaqComponent from "@/components/partials/FaqComponent";
+import Type from "@/components/partials/Type";
 
 const coursesBenefits = [
   "Get hired easily",
@@ -82,16 +88,17 @@ const frequentAskedQuestions = [
 ];
 const websiteData = [
   {
-    title: "Online Students",
-    numbers: 12500,
+    title: "Courses",
+    numbers: 10,
   },
   {
     title: "Batches",
-    numbers: 200,
+    numbers: 15,
   },
+
   {
-    title: "Courses",
-    numbers: 10,
+    title: " Hours Video",
+    numbers: 100,
   },
 ];
 const customerReview = [
@@ -101,27 +108,71 @@ const customerReview = [
     rating: 5,
   },
   {
-    img: userImg2,
-    text: "The quality of education is top-notch and the courses are affordable",
-    rating: 4.5,
-  },
-  {
     img: userImg3,
     text: "If you are looking for reliable and efficient learn, this academy is the way to go",
     rating: 5,
   },
+  {
+    img: userImg2,
+    text: "The quality of education is top-notch and the courses are affordable",
+    rating: 4.5,
+  },
 ];
+const settings = {
+  infinite: true,
+  slidesToShow: 2,
+  slidesToScroll: 1,
+  autoplay: true,
+  speed: 3000,
+  autoplaySpeed: 100,
+  cssEase: "linear",
+  responsive: [
+    {
+      breakpoint: 1024,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 1,
+        infinite: true,
+        autoplay: true,
+        speed: 3000,
+        autoplaySpeed: 100,
+      },
+    },
+    {
+      breakpoint: 600,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        infinite: true,
+        autoplay: true,
+        speed: 3000,
+        autoplaySpeed: 100,
+      },
+    },
+    {
+      breakpoint: 480,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        infinite: true,
+        autoplay: true,
+        speed: 3000,
+        autoplaySpeed: 100,
+      },
+    },
+  ],
+};
 const blogData = [
   {
     img: bolgImg1,
     text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's  standard dummy text ever since the 1500s,",
   },
   {
-    img: bolgImg2,
+    img: bolgImg3,
     text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,",
   },
   {
-    img: bolgImg3,
+    img: bolgImg2,
     text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,",
   },
 ];
@@ -163,12 +214,13 @@ const coursesData = [
 const globalAlumniImgData = [
   globalAlumniImg1,
   globalAlumniImg2,
-  globalAlumniImg3,
-  globalAlumniImg4,
+  globalAlumniImg1,
+  globalAlumniImg2,
 ];
 
 const Home = () => {
   const [customerReviewPage, setCustomerReviewPage] = useState(0);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     let ctx = gsap.context(() => {
@@ -204,8 +256,11 @@ const Home = () => {
         >
           <div className="max-w-[100%] md:max-w-xl mb-10">
             <h1 className="mb-8">
-              Join the digital revolution, and become a blockchain expert from
-              anywhere with our online courses
+              Join the digital revolution,
+              <div className="h-40 md:h-44">
+                {" "}
+                <Type />
+              </div>
             </h1>
             <div className="max-w-md mb-10 font-medium">
               <p className="mb-5">
@@ -308,15 +363,15 @@ const Home = () => {
           <p className="text-xl mb-4">HEAR IT FROM</p>
           <h2 className="text-white mb-12">Our Global Alumni</h2>
 
-          <div className="grid sm:grid-cols-2 md:grid-cols-4 justify-items-center gap-x-10 gap-y-10">
-            {globalAlumniImgData.map((item, i) => (
-              <Image
-                key={i}
-                src={item}
-                alt="globalAlumniImg"
-                className="max-md:w-52"
-              />
-            ))}
+          <div className="cursor-pointer    w-full ">
+            <Slider {...settings}>
+              {globalAlumniImgData.map((item, i) => (
+                <div className="flex flex-row items-center mx-auto justify-center m-7  p-3 gap-5">
+                  {" "}
+                  <Image src={item} alt="img" />
+                </div>
+              ))}
+            </Slider>
           </div>
         </div>
       </section>
@@ -338,7 +393,23 @@ const Home = () => {
           {websiteData.map((item) => (
             <div key={item.title}>
               <div className="flex flex-row text-center justify-items-center">
-                <h2>{item.numbers}</h2>
+                <h2>
+                  <ScrollTriggera
+                    onEnter={() => setLoading(true)}
+                    onExit={() => {
+                      setLoading(false);
+                    }}
+                  >
+                    {loading && (
+                      <CountUp
+                        start={0}
+                        end={item.numbers}
+                        duration={3}
+                        delay={0}
+                      />
+                    )}
+                  </ScrollTriggera>
+                </h2>
                 <AddIcon className="my-auto text-2xl" />
               </div>
 
