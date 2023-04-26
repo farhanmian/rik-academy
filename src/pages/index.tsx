@@ -96,16 +96,6 @@ const websiteData = [
     title: "Batches",
     numbers: 15,
   },
-
-  {
-    title: " Hours Video",
-    numbers: 100,
-  },
-  {
-    title: "Batches",
-    numbers: 15,
-  },
-
   {
     title: " Hours Video",
     numbers: 100,
@@ -265,7 +255,7 @@ const Home = () => {
   }, [isMobile]);
 
   useEffect(() => {
-    if (loading) return;
+    // if (loading) return;
     const container = document.querySelector(
       "#websiteDataContainer"
     ) as Element;
@@ -274,14 +264,15 @@ const Home = () => {
     );
 
     observer.observe(container);
-  }, []);
+  }, [loading]);
 
   const onElementInView: IntersectionObserverCallback = (entries) => {
     entries.forEach((entry: { isIntersecting: boolean }) => {
       if (entry.isIntersecting) {
         // do something when the element comes into view
-        console.log("testing");
         setLoading(true);
+      } else {
+        setLoading(false);
       }
     });
   };
