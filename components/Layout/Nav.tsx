@@ -76,7 +76,7 @@ const Nav = () => {
           </div>
 
           <button
-            className="md:hidden"
+            className="md:hidden z-20"
             onClick={() => {
               setShowSidebar(!showSidebar);
             }}
@@ -86,7 +86,7 @@ const Nav = () => {
 
           <div
             className={`flex gap-x-8 md:items-center
-        max-md:flex-col max-md:fixed right-0 top-[5%] max-md:bg-white md:w-max max-md:py-4 max-md:pt-20 max-md:h-full max-md:text-xl gap-y-10 transition-all ${
+        max-md:flex-col max-md:fixed right-0 top-[5%] max-md:bg-white md:w-max max-md:py-4 max-md:pt-20 max-md:h-full max-md:text-lg gap-y-10 transition-all ${
           showSidebar
             ? "max-md:px-4 max-md:pl-10 max-xs:pl-6 max-md:w-60 max-xs:w-52 "
             : "w-0"
@@ -95,7 +95,7 @@ const Nav = () => {
           >
             <Link
               href={"/"}
-              className="md:hover:text-bluePrimary font-medium md:font-normal text-xl md:text-base"
+              className="md:hover:text-bluePrimary font-medium md:font-normal md:text-base"
             >
               Home
             </Link>
@@ -120,7 +120,7 @@ const Nav = () => {
             />
             <Link
               href="#Blogs"
-              className="md:hover:text-bluePrimary font-medium md:font-normal text-xl md:text-base"
+              className="md:hover:text-bluePrimary font-medium md:font-normal md:text-base"
             >
               {" "}
               Blogs

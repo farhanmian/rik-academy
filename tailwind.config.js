@@ -1,10 +1,13 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./components/**/*.{js,ts,jsx,tsx}", "./src/**/*.{js,ts,jsx,tsx}"],
+  content: [
+    "./components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/**/*.{js,ts,jsx,tsx,mdx}",
+  ],
   theme: {
     extend: {
-      maxWidth: {
-        "8xl": "90rem",
+      screens: {
+        xs: "480px",
       },
       colors: {
         bluePrimary: "#3C50E0",
@@ -12,8 +15,8 @@ module.exports = {
         colorYellow: "#E7C62F",
         Purple: "#C1C9FF",
       },
-      screens: {
-        xs: "480px",
+      maxWidth: {
+        "8xl": "90rem",
       },
     },
   },
